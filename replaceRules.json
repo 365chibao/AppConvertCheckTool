@@ -1,0 +1,239 @@
+﻿[
+  {
+    "from": "AxFPSpread.AxvaSpread",
+    "to": "DataGridView",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "\\(short\\)(\\w+)\\.MaxRows",
+    "to": "$1.RowCount",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "\\(short\\)(\\w+)\\.MaxCols",
+    "to": "$1.ColumnCount",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "MaxRows",
+    "to": "RowCount",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "MaxCols",
+    "to": "ColumnCount",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "using Microsoft.VisualBasic;",
+    "to": "",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "using Microsoft.VisualBasic.CompilerServices;",
+    "to": "",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "My.MyProject.Application.Info.DirectoryPath",
+    "to": "Application.StartupPath",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "(\\w+)\\.Locked\\s*=\\s*true;",
+    "to": "$1.Enabled = false;",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "(\\w+)\\.Locked\\s*=\\s*false;",
+    "to": "$1.Enabled = true;",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.Format\\(DateTime\\.Now\\s*,\\s*\"yyyy/mm/dd hh:mm\"\\)",
+    "to": "DateTime.Now.ToString(\"yyyy/MM/dd HH:mm\")",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.Format\\(DateTime\\.Now\\s*,\\s*\"([^\"]*)\"\\)",
+    "to": "DateTime.Now.ToString(\"$1\")",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.Format\\(Conversions\\.ToShort\\((\\w+)\\)\\s*\\+\\s*1,\\s*\"(0+)\"\\)",
+    "to": "string.Format(\"{0:$2}\", int.Parse($1) + 1)",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.Format\\(Conversions\\.ToShort\\(([^)]+)\\)\\s*\\+\\s*1,\\s*\"(0+)\"\\)",
+    "to": "string.Format(\"{0:$2}\", int.Parse($1) + 1)",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Conversions\\.ToShort\\((\\w+)\\)",
+    "to": "int.Parse($1)",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Conversions\\.ToShort\\(([^)]+)\\)",
+    "to": "int.Parse($1)",
+    "type": "regex",
+    "description": ""
+  },
+
+  {
+    "from": "Conversions\\.ToString\\(([^)]+)\\)",
+    "to": "$1.ToString()",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Strings\\.RTrim\\((\\w+)\\)",
+    "to": "$1.TrimEnd()",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Strings\\.RTrim\\(([a-zA-Z][a-zA-Z0-9_]*)\\(\\)\\)",
+    "to": "$1().TrimEnd()",
+    "type": "regex",
+    "description": ""
+  },
+
+  {
+    "from": "Constants.vbNewLine",
+    "to": "Environment.NewLine",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "if\\s*\\(Conversions\\.ToBoolean\\(Operators\\.ConditionalCompareObjectNotEqual\\((\\w+\\.Text|\\w+),\\s*(\\w+\\.Text|\\w+),\\s*false\\)\\)\\)",
+    "to": "if ($1 != $2)",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "if\\s*\\(Conversions\\.ToBoolean\\(Operators\\.ConditionalCompareObjectEqual\\((\\w+\\.Text|\\w+),\\s*(\\w+\\.Text|\\w+),\\s*false\\)\\)\\)",
+    "to": "if ($1 == $2)",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "if\\s*\\(Conversions\\.ToBoolean\\(Operators\\.ConditionalCompareObjectEqual\\(([a-zA-Z][a-zA-Z0-9_]*)\\s*,\\s*([a-zA-Z][a-zA-Z0-9_]*\\[[a-zA-Z0-9_]+\\])\\s*,\\s*false\\)\\)\\)",
+    "to": "if ($1 == $2)",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.Format\\((\\w+),\\s*\"yyyy/mm/dd\"\\)",
+    "to": "DateTime.Parse($1).ToString(\"yyyy/MM/dd\")",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.Format\\((\\w+),\\s*\"yyyy/mm/dd hhmmss\"\\)",
+    "to": "DateTime.Parse($1).ToString(\"yyyy/MM/dd HHmmss\")",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "\\(short\\)MsgBoxResult\\.(\\w+)",
+    "to": "(short)DialogResult.$1",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "\\(short\\)Math\\.Round\\(Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.PixelsToTwips[XY]\\(([a-zA-Z][a-zA-Z0-9_]*(\\.\\w+)?)\\)\\)",
+    "to": "$1",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.PixelsToTwips[XY]\\(([a-zA-Z][a-zA-Z0-9_]*(\\.\\w+)?)\\)",
+    "to": "$1",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.PixelsToTwips[XY]\\(([a-zA-Z][a-zA-Z0-9_]*(\\.\\w+)?)\\)",
+    "to": "$1",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Microsoft\\.VisualBasic\\.Compatibility\\.VB6\\.Support\\.TwipsToPixels[XY]\\(([^)]+)\\)",
+    "to": "$1",
+    "type": "regex",
+    "description": ""
+  },
+
+  {
+    "from": "(\\w+)\\.SetText\\((\\w+),\\s*(\\w+),\\s*((?:\\w+\\.)?\\w+)\\);",
+    "to": "$1.Rows[$3].Cells[$2].Value = $4;",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "(\\w+)\\.SetText\\(([^,]+),\\s*([^,]+),\\s*(\"[^\"]*\"|\\w+(?:\\.\\w+)?)\\);",
+    "to": "$1.Rows[$3].Cells[$2].Value = $4;",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "(\\w+)\\.GetText\\((\\w+),\\s*(\\w+),\\s*ref\\s*(\\w+)\\);",
+    "to": "$4 = $1.Rows[$3].Cells[$2].Value?.ToString();",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "(\\w+)\\.GetText\\((\\w+),\\s*([a-zA-Z][a-zA-Z0-9_]*(?:\\.[a-zA-Z][a-zA-Z0-9_]*)?(?:\\s*-\\s*[0-9]+)?),\\s*ref\\s*(\\w+)\\);",
+    "to": "$4 = $1.Rows[$3].Cells[$2].Value?.ToString();",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "Strings\\.Chr\\(([a-zA-Z][a-zA-Z0-9_]*)\\)",
+    "to": "((char)$1).ToString()",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "(string)VB.strDateNow",
+    "to": "DateTime.Now.ToString()",
+    "type": "Replace",
+    "description": ""
+  },
+  {
+    "from": "\\(int\\)VB\\.Right\\(([a-zA-Z][a-zA-Z0-9_]*)\\s*,\\s*(\\d+)\\)",
+    "to": "int.Parse($1.Substring(Math.Max(0, $1.Length - $2)))",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "\\((double|int)\\)VB\\.Right\\(([a-zA-Z][a-zA-Z0-9_]*)\\s*,\\s*(\\d+)\\)",
+    "to": "$1.Parse($2.Substring(Math.Max(0, $2.Length - $3)))",
+    "type": "regex",
+    "description": ""
+  },
+  {
+    "from": "VB\\.Right\\(([a-zA-Z][a-zA-Z0-9_]*)\\s*,\\s*(\\d+)\\)",
+    "to": "$1.Substring(Math.Max(0, $1.Length - $2))",
+    "type": "regex",
+    "description": ""
+  }
+]
